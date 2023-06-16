@@ -11,4 +11,13 @@ export async function getAllMovies() {
     return data.results
 }
 
+export async function getMovieById(id) {
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=18b674495b6e79918fbaf0f167a9d6d0`)
 
+    if (!response.ok) {
+        return Promise.reject(response.statusText)
+    }
+
+    const data = await response.json()
+    return data
+}
