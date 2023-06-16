@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieById } from './lib/api';
 import './styles/movie.css';
+import ReviewCard from './components/ReviewCard';
 
 function Movie() {
     const baseImageUrl = 'https://image.tmdb.org/t/p/w500';
@@ -9,6 +10,7 @@ function Movie() {
     
     // Fetch movie details using the ID and display them
     const [movie, setMovie] = useState([]);
+    
     
     useEffect(() => {
         try{
@@ -28,6 +30,7 @@ function Movie() {
         <div className='content-container'>
             <h1>{movie.title}</h1>
             <div className='review-container'>
+                <ReviewCard id={id} />
                 <p>Write a Review</p>
                 <textarea className='review-input' rows={6}></textarea>
             </div>
