@@ -11,14 +11,14 @@ function ReviewCard({id}) {
         } catch(e) {
             console.log(e)
         }
-    }, [])
+    }, [id])
 
   return (
     <div>
         {
-            reviews.map((review) => {
+            reviews.map((review, index) => {
                 return(
-                    <div className='review-card'>
+                    <div key={index} className='review-card'>
                         <div className='user-info'>
                             <div className='user-name'>{review.user}</div>
                         </div>

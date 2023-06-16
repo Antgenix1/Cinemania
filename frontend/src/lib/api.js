@@ -35,3 +35,18 @@ export async function getReviews(id) {
     const data = await response.json()
     return data
 }
+
+export async function createReview(post) {
+    console.log(post)
+    const response = await fetch(`${ReviewURL}/new`, {
+        method: "POST",
+        body: JSON.stringify(post)
+    })
+
+    if (!response.ok) {
+        return Promise.reject(response.statusText)
+    }
+
+    const data = await response.json()
+    return data
+}
