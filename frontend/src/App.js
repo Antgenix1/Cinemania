@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import { getAllMovies } from './lib/api';
+import MovieCard from './components/MovieCard';
 
 function App() {
 
@@ -18,16 +19,11 @@ function App() {
   
   return (
     <div className="App">
-      {
-        movies.map((movie) => {
-          return(
-            <li>
-              <img src={`${imageUrl}${movie.poster_path}`} alt="" />
-              <h1>{movie.title}</h1>
-            </li>
-          )
-        })
-      }
+
+      {movies.map((movie, index) => (
+        <MovieCard key={index} title={movie.title} posterPath={movie.poster_path}/>
+      ))}
+
     </div>
   );
 }
