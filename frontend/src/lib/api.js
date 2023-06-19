@@ -62,5 +62,5 @@ export async function getSearchedMovie(query) {
     }
 
     const data = await response.json()
-    return data
+    return data.results
 }
