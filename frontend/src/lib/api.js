@@ -64,3 +64,9 @@ export async function getSearchedMovie(query) {
     const data = await response.json()
     return data.results
 }
+
+
+//Login Function
+export async function login({username, password}) {
+    const response = await fetch()
+}

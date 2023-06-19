@@ -7,8 +7,8 @@ function Nav() {
   return (
     <div className='topnav'>
       <div className='menu'>
-        <Link className='link' href={`/`}>Home</Link>
-        <Link className='link'>Login</Link>
+        <Link className='link' to="/">Home</Link>
+        <Link className='link' to="/login">Login</Link>
       </div>
       <SearchMovies />
     </div>
