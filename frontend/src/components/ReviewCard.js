@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { deleteReview, getReviews } from '../lib/api';
+import { deleteReview, getReviewById, getReviews } from '../lib/api';
 import '../styles/reviewcard.css'
 
 function ReviewCard({id}) {
@@ -17,6 +17,7 @@ function ReviewCard({id}) {
     const handleDelete = () => {
         reviews.map((r) => deleteReview(r._id))
     }
+
 
   return (
     <div>

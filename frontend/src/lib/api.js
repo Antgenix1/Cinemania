@@ -37,11 +37,22 @@ export async function getReviews(id) {
     return data
 }
 
+export async function getReviewById(id) {
+    const response = await fetch(`${ReviewURL}${id}`)
+
+    if (!response.ok){
+        return Promise.reject(response.statusText)
+    }
+
+    const data = await response.json()
+    return data
+}
+
 export async function createReview(post) {
     const response = await fetch(`${ReviewURL}new`, {
         method: "POST",
         headers: {
-            'Content-Type': 'application/json',
+            'content-type': 'application/json',
         },
         body: JSON.stringify(post)
     })
@@ -50,6 +61,23 @@ export async function createReview(post) {
         return Promise.reject(response.statusText)
     }
 
+
+    const data = await response.json()
+    return data
+}
+
+export async function updateReview(post){
+    const response = await fetch(`${ReviewURL}${post._id}`, {
+        method: "PUT",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify(post)
+    })
+
+    if (!response.ok) {
+        return Promise.reject(response.statusText)
+    }
 
     const data = await response.json()
     return data
@@ -73,7 +101,20 @@ export async function deleteReview(id) {
 
 //User API
 export async function createUser(user) {
-    const response = await fetch(`${ReviewURL}new/user`)
+    const response = await fetch(`${ReviewURL}new/user`, {
+        method: "POST",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify(user)
+    })
+
+    if (!response.ok) {
+        return Promise.reject(response.statusText)
+    }
+
+    const data = await response.json()
+    return data
 }
 
 //Search API Request

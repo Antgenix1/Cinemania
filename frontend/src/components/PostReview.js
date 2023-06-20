@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import { createReview, createUser } from '../lib/api';
+import React, { useEffect, useState } from 'react'
+import { createReview, createUser, updateReview } from '../lib/api';
 
 
-function PostReview({ id }) {
+function PostReview({ id, postToEdit }) {
     const defaultReviewModel = {
         movieId: id,
         user: "",
@@ -12,6 +12,12 @@ function PostReview({ id }) {
     const defaultUserModel = {
       user: ""
     }
+
+    useEffect(() => {
+      if (postToEdit) {
+        setPost(postToEdit)
+      }
+    }, [postToEdit])
 
     const [post, setPost] = useState(defaultReviewModel);
     const [user, setUser] = useState(defaultUserModel)
@@ -26,8 +32,13 @@ function PostReview({ id }) {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        createReview(post)
-        createUser(user)
+
+        if (post._id) {
+          updateReview(post)
+        } else {
+          createReview(post)
+          createUser(user)
+        }
 
     }
 
