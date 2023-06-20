@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { createReview } from '../lib/api';
+import { createReview, createUser } from '../lib/api';
 
 
 function PostReview({ id }) {
@@ -27,7 +27,7 @@ function PostReview({ id }) {
         e.preventDefault()
 
         createReview(post)
-        // createUser(user)
+        createUser(user)
 
     }
 
