@@ -19,7 +19,7 @@ function Movie() {
         } catch(e) {
             console.log(e)
         }
-    })
+    }, [id])
     
     const imageUrl = `${baseImageUrl}${movie.poster_path}`
 

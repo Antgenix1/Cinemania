@@ -14,7 +14,7 @@ function MovieList() {
     } catch(e) {
       console.log(e)
     }
-  })
+  }, [])
 
   return (
     <div className="movie-list">

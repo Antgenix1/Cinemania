@@ -14,10 +14,10 @@ function PostReview({ id }) {
     const [post, setPost] = useState(defaultModel);
 
     const handleChange = (e) => {
-        const newPost = structuredClone(post)
-        newPost[e.target.name] = e.target.value
-        setPost(newPost)
-    }
+        const { name, value } = e.target;
+        setPost((prevPost) => ({ ...prevPost, [name]: value }));
+      };
+      
 
     const handleSubmit = async (e) => {
         e.preventDefault()

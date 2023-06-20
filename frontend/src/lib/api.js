@@ -40,6 +40,9 @@ export async function getReviews(id) {
 export async function createReview(post) {
     const response = await fetch(`${ReviewURL}new`, {
         method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
         body: JSON.stringify(post)
     })
 
@@ -49,7 +52,6 @@ export async function createReview(post) {
 
 
     const data = await response.json()
-    console.log(data)
     return data
 }
 
@@ -65,8 +67,3 @@ export async function getSearchedMovie(query) {
     return data.results
 }
 
-
-//Login Function
-export async function login({username, password}) {
-    const response = await fetch()
-}
