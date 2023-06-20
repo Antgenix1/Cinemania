@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { getReviews } from '../lib/api';
+import { deleteReview, getReviews } from '../lib/api';
 import '../styles/reviewcard.css'
 
 function ReviewCard({id}) {
     const [reviews, setReviews] = useState([]);
+
 
     useEffect(() => {
         try{
@@ -13,16 +14,22 @@ function ReviewCard({id}) {
         }
     }, [id])
 
+    const handleDelete = () => {
+        reviews.map((r) => deleteReview(r._id))
+    }
+
   return (
     <div>
         {
             reviews.map((review, index) => {
+                console.log(review)
                 return(
                     <div key={index} className='review-card'>
                         <div className='user-info'>
                             <div className='user-name'>{review.user}</div>
                         </div>
                         <div className='review-text'>{review.review}</div>
+                        <button onClick={handleDelete}>Delete</button>
                     </div>
                 )
             })

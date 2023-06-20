@@ -1,35 +1,43 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { createReview } from '../lib/api';
 
 
 function PostReview({ id }) {
-    const defaultModel = {
+    const defaultReviewModel = {
         movieId: id,
-        user: "Max",
+        user: "",
         review: ""
     }
 
+    const defaultUserModel = {
+      user: ""
+    }
 
-    const [isLoading, setIsLoading] = useState(false)
-    const [post, setPost] = useState(defaultModel);
+    const [post, setPost] = useState(defaultReviewModel);
+    const [user, setUser] = useState(defaultUserModel)
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setPost((prevPost) => ({ ...prevPost, [name]: value }));
+        setUser((prevPost) => ({...prevPost, [name]: value}));
       };
       
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        setIsLoading(true)
 
         createReview(post)
+        // createUser(user)
 
     }
 
   return (
     <div className='review-container'>
         <form onSubmit={handleSubmit}>
+            <fieldset>
+              <label>Username:</label>
+              <input type='text' name='user' value={post.user} onChange={handleChange}/>
+            </fieldset>
             <fieldset>
                 <label>Review:</label>
                 <textarea type='text' name='review' value={post.review} onChange={handleChange}/>

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { getSearchedMovie } from '../lib/api.js';
+import MovieCard from './MovieCard.js';
+import '../styles/movielist.css';
 
 function SearchMovies() {
   const [query, setQuery] = useState('');
@@ -35,9 +37,8 @@ function SearchMovies() {
       {/* Display the results */}
       <div>
         {results.map((movie) => (
-          <div key={movie.id}>
-            <h3>{movie.original_title}</h3>
-            <p>{movie.release_date}</p>
+          <div className='movie-list' key={movie.id}>
+            <MovieCard id={movie.id} title={movie.original_title} posterPath={movie.poster_path}/>
           </div>
         ))}
       </div>

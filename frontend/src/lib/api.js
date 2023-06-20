@@ -55,6 +55,27 @@ export async function createReview(post) {
     return data
 }
 
+export async function deleteReview(id) {
+    const response = await fetch(`${ReviewURL}${id}`, {
+        method: "DELETE",
+        headers: {
+            "content-type": "application/json"
+        }
+    })
+
+    if (!response.ok) {
+        return Promise.reject(response.statusText)
+    }
+
+    const data = await response.json()
+    return data
+}
+
+//User API
+export async function createUser(user) {
+    const response = await fetch(`${ReviewURL}new/user`)
+}
+
 //Search API Request
 export async function getSearchedMovie(query) {
     const response = await fetch(`${SearchURL}${query}`)

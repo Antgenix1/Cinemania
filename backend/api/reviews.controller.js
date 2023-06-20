@@ -1,4 +1,5 @@
 const ReviewsDAO = require('../dao/reviewsDAO.js');
+const UsersDao = require('../dao/usersDAO.js');
 
 module.exports = class ReviewsController {
     static async apiPostReview(req, res, next) {
@@ -16,7 +17,7 @@ module.exports = class ReviewsController {
         res.status(500).json({ error: e.message })
       }
     }
-  
+
     static async apiGetReview(req, res, next) {
       try {
         let id = req.params.id || {}
@@ -85,4 +86,17 @@ module.exports = class ReviewsController {
         res.status(500).json({ error: e })
       }
     }
+
+    static async apiPostUser(req, res, next) {
+      try {
+        const user = req.body.user
+        const userResponse = await UsersDao.addUser(
+          user
+        )
+        res.json({ status: "success user added"})
+      } catch (e) {
+        res.status(500).json({ error: e.message })
+      }
+    }
   }
+  
