@@ -23,18 +23,19 @@ function SearchMovies() {
   return (
     <div>
       <form onSubmit={handleSearch}>
-        <input
-          type="search"
-          id="query"
-          name="q"
-          placeholder="Search..."
-          value={query}
-          onChange={handleInputChange}
-        />
+        <div className='search-bar'>
+          <input
+            type="search"
+            id="query"
+            name="q"
+            placeholder="Search..."
+            value={query}
+            onChange={handleInputChange}
+          />
+        </div>
         <button type="submit">Search</button>
       </form>
 
-      {/* Display the results */}
       <div>
         {results.map((movie) => (
           <div className='movie-list' key={movie.id}>

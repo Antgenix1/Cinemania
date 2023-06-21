@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { deleteReview, getReviewById, getReviews } from '../lib/api';
+import { deleteReview, getReviews } from '../lib/api';
 import '../styles/reviewcard.css'
 
 function ReviewCard({id}) {
@@ -30,7 +30,7 @@ function ReviewCard({id}) {
                             <div className='user-name'>{review.user}</div>
                         </div>
                         <div className='review-text'>{review.review}</div>
-                        <button onClick={handleDelete}>Delete</button>
+                        <button className='delete-button' onClick={handleDelete}>Delete</button>
                     </div>
                 )
             })
