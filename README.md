@@ -1,4 +1,4 @@
-Um die Applikation ausführen zu können muss man sowohl im frontend als auch im backend ordner folgenden Command ausführen:
+Um die Applikation ausführen zu können muss man sowohl im frontend als auch im backend ordner folgenden Command ausführen vorher sollte man noch das File package-lock.json löschen:
 
 npm install
 
